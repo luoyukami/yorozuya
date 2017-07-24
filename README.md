@@ -1,2 +1,3 @@
 # yorozuya
-standby a blog, more than a blog
+
+more than a blog
