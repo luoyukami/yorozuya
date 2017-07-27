@@ -1,0 +1,79 @@
+server:
+  port: 8080
+  contextPath:  /
+# JWT
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: "powerplant/auth"
+      refresh: "powerplant/auth/refresh"
+      register: "powerplant/auth/register"
+    user:
+      path: "powerplant/user"
+    role:
+      path: "powerplant/role"
+#spring:
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+#      dialect:  org.hibernate.dialect.PostgreSQLDialect
+#  datasource:
+#    platform: postgres
+#    url:  jdbc:postgresql://localhost:5432/powerplant
+#    username: powerplant
+#    password: powerplant
+#    driverClassName: org.postgresql.Driver
+#  primary:
+#    datasource:
+#      driverClassName: org.postgresql.Driver
+#      url:  jdbc:postgresql://localhost:5432/db1
+#      username: powerplant
+#      password: powerplant
+#  secondary:
+#    datasource:
+#      driverClassName: org.postgresql.Driver
+#      url:  jdbc:postgresql://localhost:5432/db2
+#      username: powerplant
+#      password: powerplant
+
+spring:
+  jpa:
+    database: SQL_SERVER
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.SQLServerDialect
+  datasource:
+#    platform: sqlserver
+#    url:  jdbc:sqlserver://10.144.136.104:1433;databaseName=CHD_XNYYCZD
+#    username: sa
+#    password: abc12#
+#    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+#     双数据源配置
+  primary:
+    datasource:
+      platform: sqlserver
+      url:  jdbc:sqlserver://10.144.136.104:1433;databaseName=CHD_XNYUSER
+      username: sa
+      password: abc12#
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  secondary:
+    datasource:
+      platform: sqlserver
+      url:  jdbc:sqlserver://10.144.136.104:1433;databaseName=CHD_XNYYCZD
+      username: sa
+      password: abc12#
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.github.binarywang.demo.wechat: DEBUG
