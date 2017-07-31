@@ -14,7 +14,6 @@ target/
 *.iws
 *.iml
 *.ipr
-*.xml
 
 ### NetBeans ###
 nbproject/private/
@@ -25,3 +24,14 @@ nbdist/
 .nb-gradle/
 
 
+src/main/java/com/example/demo/config/
+src/main/java/com/example/demo/controller/
+src/main/java/com/example/demo/domain/
+src/main/java/com/example/demo/entity/
+src/main/java/com/example/demo/filter/
+src/main/java/com/example/demo/model/
+src/main/java/com/example/demo/repository/
+src/main/java/com/example/demo/service/
+src/main/java/com/example/demo/utils/
+src/main/java/com/example/demo/vo/
+src/main/resources/static/
