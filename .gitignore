@@ -1,8 +1,4 @@
 
-*.iml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/workspace.xml
-Documents/.DS_Store
+
+.idea
 .DS_Store
