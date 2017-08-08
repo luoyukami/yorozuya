@@ -1,7 +1,6 @@
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
-### MAC ###
 .DS_Store
 
 ### STS ###
@@ -15,6 +14,7 @@ target/
 ### IntelliJ IDEA ###
 .idea
 *.iws
+*.iml
 *.ipr
 
 
@@ -39,3 +39,4 @@ src/main/java/com/example/demo/utils/
 src/main/java/com/example/demo/vo/
 src/main/resources/static/
 
+.DS_Store
