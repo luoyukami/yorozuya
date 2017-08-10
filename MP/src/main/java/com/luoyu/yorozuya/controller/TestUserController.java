@@ -31,4 +31,19 @@ public class TestUserController {
         return testUserService.queryUserBySex(sex);
     }
 
+    @RequestMapping("/listALl")
+    public List<TestUser> listAll() {
+        return testUserService.listAll();
+    }
+
+    @RequestMapping("/find")
+    public List<TestUser> findByNameAndSex(String name, Character sex) {
+        return testUserService.findByNameAndSex(name, sex);
+    }
+
+    @RequestMapping("/query")
+    public List<TestUser> queryByNameAndSex(String name, Character sex) {
+        return testUserService.queryByNameAndSex(name, sex);
+    }
+
 }
