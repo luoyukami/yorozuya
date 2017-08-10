@@ -27,7 +27,6 @@ public class TestUserService {
         return testUserRepository.findBySex(sex);
     }
 
-<<<<<<< HEAD
     public List<TestUser> listAll() {
         return testUserRepository.findAll();
     }
@@ -40,6 +39,4 @@ public class TestUserService {
         return testUserRepository.withNameAndSexQuery(name, sex);
     }
 
-=======
->>>>>>> Demo -v20170810版
 }
