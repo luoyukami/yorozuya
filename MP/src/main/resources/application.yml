@@ -3,9 +3,9 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://115.29.106.186:3306/test?serverTimezone=UTC&useSSL=false
-    username: gan
-    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC&useSSL=false
+    username: 
+    password: 
   jpa:
     hibernate:
       ddl-auto: none
