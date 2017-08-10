@@ -21,7 +21,6 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-public class User {
     @Column(name = "uuid")
     private String uuid;
     @Column(name = "name")
