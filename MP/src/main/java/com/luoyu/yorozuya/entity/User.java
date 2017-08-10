@@ -1,9 +1,12 @@
 package com.luoyu.yorozuya.entity;
 
 import javax.persistence.Column;
+<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+=======
+>>>>>>> demo add
 import java.sql.Timestamp;
 
 /**
@@ -12,12 +15,16 @@ import java.sql.Timestamp;
  * @author ganxiang20970
  *         2017-08-08 22:04
  */
+<<<<<<< HEAD
 @Entity
 public class User {
 
     @Id
     @GeneratedValue
     private Long id;
+=======
+public class User {
+>>>>>>> demo add
     @Column(name = "uuid")
     private String uuid;
     @Column(name = "name")
