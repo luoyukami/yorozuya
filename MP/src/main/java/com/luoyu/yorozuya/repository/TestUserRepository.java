@@ -19,10 +19,10 @@ public interface TestUserRepository extends JpaRepository<TestUser, Long>{
 
     List<TestUser> findBySex(Character sex);
 
-    TestUser findByNameAndSex(String name, Character sex);
+    List<TestUser> findByNameAndSex(String name, Character sex);
 
     @Query("select u from TestUser u where u.name=:name And u.sex=:sex")
-    TestUser withNameAndSexQuery(@Param("name") String name, @Param("sex") Character sex);
+    List<TestUser> withNameAndSexQuery(@Param("name") String name, @Param("sex") Character sex);
 
 
 }
