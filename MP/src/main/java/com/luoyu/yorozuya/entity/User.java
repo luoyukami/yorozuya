@@ -1,6 +1,9 @@
 package com.luoyu.yorozuya.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
@@ -9,7 +12,12 @@ import java.sql.Timestamp;
  * @author ganxiang20970
  *         2017-08-08 22:04
  */
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue
+    private Long id;
     @Column(name = "uuid")
     private String uuid;
     @Column(name = "name")
