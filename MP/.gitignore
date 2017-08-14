@@ -1,7 +1,6 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 *.yml
-logback-spring.xml
 
 ### STS ###
 .apt_generated
