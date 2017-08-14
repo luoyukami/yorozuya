@@ -2,6 +2,8 @@ package com.luoyu.yorozuya.controller;
 
 import com.luoyu.yorozuya.entity.TestUser;
 import com.luoyu.yorozuya.service.TestUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import java.util.List;
  */
 @RestController
 public class TestUserController {
+    Logger logger = LoggerFactory.getLogger(TestUserController.class);
 
     @Autowired
     TestUserService testUserService;
