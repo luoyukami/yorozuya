@@ -1,0 +1,38 @@
+<form novalidate #form="ngForm">
+  <label>
+    <span>userName</span>
+    <input
+      type="text"
+      placeholder="请输入用户名"
+      name="userName"
+      ngModel>
+  </label>
+  <div ngModelGroup="account">
+    <label>
+      <span>Email address</span>
+      <input
+        type="email"
+        placeholder="请输入邮箱"
+        name="email"
+        ngModel>
+    </label>
+    <label>
+      <span>password</span>
+      <input
+        type="password"
+        placeholder="请输入密码"
+        name="password"
+        ngModel>
+    </label>
+    <label>
+      <span>password</span>
+      <input
+        type="password"
+        placeholder="再次输入密码"
+        name="confirmPW"
+        ngModel>
+    </label>
+  </div>
+  <button type="submit">注册</button>
+</form>
+
