@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 import { User } from '../../../../share/models/User';
 
@@ -9,13 +11,19 @@ import { User } from '../../../../share/models/User';
 })
 export class SignupComponent implements OnInit {
   public user: User = {
-    userName: 'luoyu',
+    userName: '',
     account: {
       email: '',
       password: '',
       confirmPW: ''
     }
   };
+
+  onSubmit({ value, vaild }: { value: User, vaild: boolean}) {
+    console.dir(value, vaild);
+    console.dir(vaild);
+  }
+
   constructor() { }
 
   ngOnInit() {
