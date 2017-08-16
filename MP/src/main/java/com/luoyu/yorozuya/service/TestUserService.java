@@ -1,6 +1,5 @@
 package com.luoyu.yorozuya.service;
 
-import com.luoyu.yorozuya.controller.TestUserController;
 import com.luoyu.yorozuya.entity.TestUser;
 import com.luoyu.yorozuya.repository.TestUserRepository;
 import org.slf4j.Logger;
