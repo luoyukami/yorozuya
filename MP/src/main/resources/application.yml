@@ -3,12 +3,12 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC&useSSL=false
-    username: 
-    password: 
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl?serverTimezone=UTC&useSSL=false
+    username: root
+    password: 1234
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
 
 

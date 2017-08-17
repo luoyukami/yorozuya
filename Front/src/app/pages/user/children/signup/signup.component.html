@@ -27,7 +27,7 @@
         required
         name="email"
         #userEmail="ngModel"
-        [(ngModel)]="user.email">
+        [(ngModel)]="user.account.email">
     </label>
     <div *ngIf="userEmail.errors?.required && userEmail.touched"
          class="error">
@@ -42,7 +42,7 @@
         minlength="6"
         name="password"
         #userPassword="ngModel"
-        [(ngModel)]="user.password">
+        [(ngModel)]="user.account.password">
     </label>
     <div *ngIf="userPassword.errors?.required && userPassword.touched"
          class="error">
@@ -61,7 +61,7 @@
         minlength="6"
         name="confirmPW"
         #userConfirmPW="ngModel"
-        [(ngModel)]="user.confirmPW">
+        [(ngModel)]="user.account.confirmPW">
     </label>
     <div *ngIf="userConfirmPW.errors?.required && userConfirmPW.touched"
          class="error">

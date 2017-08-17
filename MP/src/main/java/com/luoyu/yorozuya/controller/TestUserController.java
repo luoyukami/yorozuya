@@ -4,6 +4,7 @@ import com.luoyu.yorozuya.entity.TestUser;
 import com.luoyu.yorozuya.service.TestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,7 +22,9 @@ public class TestUserController {
     TestUserService testUserService;
 
     @RequestMapping("/add")
-    public TestUser add(String name, Integer age, Character sex){
+    public TestUser add(@RequestParam("name") String name,
+                        @RequestParam("age") Integer age,
+                        @RequestParam("sex") Character sex){
         TestUser user = new TestUser(name, age, sex);
         return testUserService.addUser(user);
     }
@@ -31,7 +34,7 @@ public class TestUserController {
         return testUserService.queryUserBySex(sex);
     }
 
-    @RequestMapping("/listALl")
+    @RequestMapping("/listAll")
     public List<TestUser> listAll() {
         return testUserService.listAll();
     }
