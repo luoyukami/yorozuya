@@ -1,4 +1,5 @@
 
+*.yml
 target/
 !.mvn/wrapper/maven-wrapper.jar
 ### MAC ###
@@ -39,3 +40,5 @@ src/main/java/com/example/demo/utils/
 src/main/java/com/example/demo/vo/
 src/main/resources/static/
 
+/MP/src/main/resources/application-dev.yml
+/MP/src/main/resources/application.yml
