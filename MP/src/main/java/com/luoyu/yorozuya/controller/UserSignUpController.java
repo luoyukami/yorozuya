@@ -3,6 +3,8 @@ package com.luoyu.yorozuya.controller;
 import com.luoyu.yorozuya.entity.UserSignUp;
 import com.luoyu.yorozuya.service.UserSignUpService;
 import com.luoyu.yorozuya.utils.FileUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,8 @@ public class UserSignUpController {
     @Autowired
     UserSignUpService userSignUpService;
 
+    private static final Logger logger = LoggerFactory.getLogger(UserSignUpController.class);
+
     @GetMapping(value = "/signUp")
     public UserSignUp signUp(@RequestParam String name,
                              @RequestParam String password){
@@ -40,6 +44,7 @@ public class UserSignUpController {
         }
         String fileName = file.getOriginalFilename();
         System.out.println(fileName);
+        logger.info("上传的文件名:" + fileName);
         // 后缀名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         System.out.println(suffixName);
