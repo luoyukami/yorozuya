@@ -10,8 +10,8 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'demo', pathMatch: 'full'},
       {path: 'demo', loadChildren: './demo/demo.module#DemoModule'},
-      {path: '**', component: PageNotFoundComponent},
-      {path: 'user', loadChildren: './user/user.module#UserModule'}
+      {path: 'user', loadChildren: './user/user.module#UserModule'},
+      {path: '**', component: PageNotFoundComponent}
     ]
   }
 ];
