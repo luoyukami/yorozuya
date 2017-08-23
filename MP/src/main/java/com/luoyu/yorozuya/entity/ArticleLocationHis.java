@@ -11,73 +11,74 @@ import java.sql.Timestamp;
  * 文章地址历史表，存放文章修改的历史信息
  */
 @Entity
-public class Article_Location_His {
-    @Id
-    @GeneratedValue
+public class ArticleLocationHis {
+
     private int id;
-    @Column(name = "articleId")
     private int articleId;
-    @Column(name = "oldLocation", columnDefinition = "varchar(256)")
     private String oldLocation;
-    @Column(name = "newLocation", columnDefinition = "varchar(256)")
     private String newLocation;
-    @Column(name = "changeCount", columnDefinition = "smallint")
     private int changeCount;
-    @Column(name = "modifyTime")
     private Timestamp modifyTime;
-    @Column(name = "operatorId", columnDefinition = "varchar(32)")
     private String operatorId;
 
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
+    }
+
+    @Column(name = "articleId")
+    public int getArticleId() {
+        return articleId;
+    }
+
+    @Column(name = "oldLocation", columnDefinition = "varchar(256)")
+    public String getOldLocation() {
+        return oldLocation;
+    }
+
+    @Column(name = "newLocation", columnDefinition = "varchar(256)")
+    public String getNewLocation() {
+        return newLocation;
+    }
+
+    @Column(name = "changeCount", columnDefinition = "smallint")
+    public int getChangeCount() {
+        return changeCount;
+    }
+
+    @Column(name = "modifyTime")
+    public Timestamp getModifyTime() {
+        return modifyTime;
+    }
+
+    @Column(name = "operatorId", columnDefinition = "varchar(32)")
+    public String getOperatorId() {
+        return operatorId;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getArticleId() {
-        return articleId;
-    }
-
     public void setArticleId(int articleId) {
         this.articleId = articleId;
-    }
-
-    public String getOldLocation() {
-        return oldLocation;
     }
 
     public void setOldLocation(String oldLocation) {
         this.oldLocation = oldLocation;
     }
 
-    public String getNewLocation() {
-        return newLocation;
-    }
-
     public void setNewLocation(String newLocation) {
         this.newLocation = newLocation;
-    }
-
-    public int getChangeCount() {
-        return changeCount;
     }
 
     public void setChangeCount(int changeCount) {
         this.changeCount = changeCount;
     }
 
-    public Timestamp getModifyTime() {
-        return modifyTime;
-    }
-
     public void setModifyTime(Timestamp modifyTime) {
         this.modifyTime = modifyTime;
-    }
-
-    public String getOperatorId() {
-        return operatorId;
     }
 
     public void setOperatorId(String operatorId) {

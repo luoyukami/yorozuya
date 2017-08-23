@@ -1,11 +1,6 @@
 package com.luoyu.yorozuya.controller;
 
 import com.luoyu.yorozuya.entity.TestUser;
-import com.luoyu.yorozuya.service.TestUserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -15,38 +10,16 @@ import java.util.List;
  * @author ganxiang20970
  *         2017-08-09 22:29
  */
-@RestController
-public class TestUserController {
+public interface TestUserController {
 
-    @Autowired
-    TestUserService testUserService;
+    TestUser add(String name, Integer age, Character sex);
 
-    @RequestMapping("/add")
-    public TestUser add(@RequestParam("name") String name,
-                        @RequestParam("age") Integer age,
-                        @RequestParam("sex") Character sex){
-        TestUser user = new TestUser(name, age, sex);
-        return testUserService.addUser(user);
-    }
+    List<TestUser> queryUserBySex(Character sex);
 
-    @RequestMapping("/queryUserBySex")
-    public List<TestUser> queryUserBySex(Character sex) {
-        return testUserService.queryUserBySex(sex);
-    }
+    List<TestUser> listAll();
 
-    @RequestMapping("/listAll")
-    public List<TestUser> listAll() {
-        return testUserService.listAll();
-    }
+    List<TestUser> findByNameAndSex(String name, Character sex);
 
-    @RequestMapping("/find")
-    public List<TestUser> findByNameAndSex(String name, Character sex) {
-        return testUserService.findByNameAndSex(name, sex);
-    }
-
-    @RequestMapping("/query")
-    public List<TestUser> queryByNameAndSex(String name, Character sex) {
-        return testUserService.queryByNameAndSex(name, sex);
-    }
+    List<TestUser> queryByNameAndSex(String name, Character sex);
 
 }
