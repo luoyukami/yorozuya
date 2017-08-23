@@ -28,6 +28,10 @@ public class TestUserService {
     }
 
     public List<TestUser> queryUserBySex(Character sex){
+        logger.info("param sex = "+ sex);
+        logger.error("一般在try catch中会加入error日志打印");
+        logger.debug("debug日志一般用于调试");
+        logger.warn("waring级别日志用的应该比较少");
         return testUserRepository.findBySex(sex);
     }
 

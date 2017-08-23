@@ -14,10 +14,10 @@ import javax.persistence.NamedQuery;
  *         2017-08-09 22:05
  */
 @Entity
-public class TestUser {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class TestUser extends UUID{
+//    @Id
+//    @GeneratedValue
+//    private Long id;
     private String name;
     private Integer age;
     private Character sex;
@@ -33,13 +33,13 @@ public class TestUser {
         this.sex = sex;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;

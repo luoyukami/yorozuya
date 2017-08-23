@@ -24,5 +24,4 @@ public interface TestUserRepository extends JpaRepository<TestUser, Long>{
     @Query("select u from TestUser u where u.name=:name And u.sex=:sex")
     List<TestUser> withNameAndSexQuery(@Param("name") String name, @Param("sex") Character sex);
 
-
 }
