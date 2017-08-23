@@ -2,6 +2,7 @@ package com.luoyu.yorozuya.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +20,7 @@ public class TestController {
 
     Logger logger = LoggerFactory.getLogger(TestController.class);
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String upload(
             @RequestParam(value = "file") MultipartFile multipartFile,
             Map<String, Object> map) {
