@@ -19,7 +19,7 @@ public class ArticleLocationHis {
     private String newLocation;
     private int changeCount;
     private Timestamp modifyTime;
-    private String operatorId;
+    private Long operatorId;
 
     @Id
     @GeneratedValue
@@ -53,7 +53,7 @@ public class ArticleLocationHis {
     }
 
     @Column(name = "operatorId", columnDefinition = "varchar(32)")
-    public String getOperatorId() {
+    public Long getOperatorId() {
         return operatorId;
     }
 
@@ -81,7 +81,7 @@ public class ArticleLocationHis {
         this.modifyTime = modifyTime;
     }
 
-    public void setOperatorId(String operatorId) {
+    public void setOperatorId(Long operatorId) {
         this.operatorId = operatorId;
     }
 }

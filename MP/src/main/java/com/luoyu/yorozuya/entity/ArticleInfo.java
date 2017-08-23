@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 public class ArticleInfo extends BaseEntity{
 
     private String articleName;
-    private String authorld;
+    private Long authorld;
     private String location;
     private String status;
     private Long pageView;
@@ -27,7 +27,7 @@ public class ArticleInfo extends BaseEntity{
     }
 
     @Column(name = "authorld", columnDefinition = "varchar(32)")
-    public String getAuthorld() {
+    public Long getAuthorld() {
         return authorld;
     }
 
@@ -60,7 +60,7 @@ public class ArticleInfo extends BaseEntity{
         this.articleName = articleName;
     }
 
-    public void setAuthorld(String authorld) {
+    public void setAuthorld(Long authorld) {
         this.authorld = authorld;
     }
 

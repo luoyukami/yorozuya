@@ -18,7 +18,7 @@ public class ArticleClass extends BaseEntity{
     private String classNameEN;
     private String status;
     private String classContent;
-    private int operatorId;
+    private Long operatorId;
 
     @Column(name = "classCode", columnDefinition = "char(4)")
     public String getClassCode() {
@@ -45,7 +45,7 @@ public class ArticleClass extends BaseEntity{
         return classContent;
     }
     @Column(name = "operatorId")
-    public int getOperatorId() {
+    public Long getOperatorId() {
         return operatorId;
     }
 
@@ -69,7 +69,7 @@ public class ArticleClass extends BaseEntity{
         this.classContent = classContent;
     }
 
-    public void setOperatorId(int operatorId) {
+    public void setOperatorId(Long operatorId) {
         this.operatorId = operatorId;
     }
 }
