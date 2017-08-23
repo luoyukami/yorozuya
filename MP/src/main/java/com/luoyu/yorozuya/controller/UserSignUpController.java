@@ -3,9 +3,12 @@ package com.luoyu.yorozuya.controller;
 import com.luoyu.yorozuya.entity.UserSignUp;
 import com.luoyu.yorozuya.service.UserSignUpService;
 import com.luoyu.yorozuya.utils.FileUtil;
+import com.luoyu.yorozuya.vo.TestJsonVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +30,8 @@ public class UserSignUpController {
     @Autowired
     UserSignUpService userSignUpService;
 
+
+
     private static final Logger logger = LoggerFactory.getLogger(UserSignUpController.class);
 
     @GetMapping(value = "/signUp")
@@ -36,8 +41,16 @@ public class UserSignUpController {
         return userSignUpService.signUp(userSignUp);
     }
 
+    @GetMapping(value = "/jsonTest")
+    public TestJsonVo jsontest(){
+        TestJsonVo testJsonVo = new TestJsonVo();
+        testJsonVo = userSignUpService.changeJson(testJsonVo);
+        return testJsonVo;
+    }
+
+
     // https://stackoverflow.com/questions/43936372/upload-file-springboot-required-request-part-file-is-not-present
-    @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/upload")
     public @ResponseBody String uploader(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             return "文件为空";
@@ -69,9 +82,9 @@ public class UserSignUpController {
     }
 
     // http://blog.csdn.net/change_on/article/details/59529034
-    @PostMapping(value = "/imageUpload")
-    public @ResponseBody String imageUpload(@RequestParam("file") MultipartFile file,
-                              HttpServletRequest request) {
+//    @PostMapping(value = "/imageUpload")
+//    public @ResponseBody String imageUpload(@RequestParam("file") MultipartFile file,
+//                              HttpServletRequest request) {
 //        if (file.isEmpty()) {
 //            return "文件为空";
 //        }
@@ -99,18 +112,18 @@ public class UserSignUpController {
 //            e.printStackTrace();
 //        }
 //        return "上传失败";
-
-        String contentType = file.getContentType();
-        String fileName = file.getOriginalFilename();
-        /*System.out.println("fileName-->" + fileName);
-        System.out.println("getContentType-->" + contentType);*/
-        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-        try {
-            FileUtil.uploadFile(file.getBytes(), filePath, fileName);
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        //返回json
-        return "uploadimg success";
-    }
+//
+//        String contentType = file.getContentType();
+//        String fileName = file.getOriginalFilename();
+//        /*System.out.println("fileName-->" + fileName);
+//        System.out.println("getContentType-->" + contentType);*/
+//        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
+//        try {
+//            FileUtil.uploadFile(file.getBytes(), filePath, fileName);
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//        }
+//        //返回json
+//        return "uploadimg success";
+//    }
 }

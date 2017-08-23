@@ -22,42 +22,46 @@ export class DemoComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     let fileForm = <HTMLFormElement>document.getElementById('file_upload_form');
-    fileForm.action = 'yorozuya/imageUpload';
-    fileForm.onsubmit = (event) => {
-      // 关闭默认事件效果
-      event.preventDefault();
-      let file = fileInput.files[0];
-      let formData = new FormData();
-      formData.append('file', file, file.name);
-      // xhr
-      // let xhr=new XMLHttpRequest();
-      // xhr.withCredentials = false;
-      // xhr.open('POST', 'yorozuya/fileUpload');
-      // xhr.onload = function() {
-      //   let json;
-      //   if (xhr.status != 200) {
-      //     console.log('HTTP Error: ' + xhr.status);
-      //     return;
-      //   }
-      //   json = JSON.parse(xhr.responseText);
-      //   if (!json || typeof json.location != 'string') {
-      //     console.log('Invalid JSON: ' + xhr.responseText);
-      //     return;
-      //   }
-      //   console.log(json.location);
-      //   fileInput.value='';
-      // };
-      // xhr.send(formData);
-
-      // Http
-      this.http.post('yorozuya/fileUpload', formData)
-        .map(res => res.json())
-        .subscribe(data => {
-          if (data) console.dir(data);
-        });
-    }
+    fileForm.action = 'yorozuya/upload';
+    // fileForm.onsubmit = (event) => {
+    //   // 关闭默认事件效果
+    //   event.preventDefault();
+    //   let file = fileInput.files[0];
+    //   let formData = new FormData();
+    //   formData.append('file', file, file.name);
+    //   // xhr
+    //   // let xhr=new XMLHttpRequest();
+    //   // xhr.withCredentials = false;
+    //   // xhr.open('POST', 'yorozuya/fileUpload');
+    //   // xhr.onload = function() {
+    //   //   let json;
+    //   //   if (xhr.status != 200) {
+    //   //     console.log('HTTP Error: ' + xhr.status);
+    //   //     return;
+    //   //   }
+    //   //   json = JSON.parse(xhr.responseText);
+    //   //   if (!json || typeof json.location != 'string') {
+    //   //     console.log('Invalid JSON: ' + xhr.responseText);
+    //   //     return;
+    //   //   }
+    //   //   console.log(json.location);
+    //   //   fileInput.value='';
+    //   // };
+    //   // xhr.send(formData);
+    //
+    //   // Http
+    //   this.http.post('yorozuya/upload', formData)
+    //     .map(res => res.json())
+    //     .subscribe(data => {
+    //       if (data) console.dir(data);
+    //     });
+    // }
     fileForm.submit();
     fileInput.value = '';
+  }
+  // 提交文章
+  public submitForm() {
+
   }
 
   ngAfterViewInit() {
