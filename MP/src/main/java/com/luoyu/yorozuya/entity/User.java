@@ -1,5 +1,7 @@
 package com.luoyu.yorozuya.entity;
 
+import org.hibernate.annotations.Where;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

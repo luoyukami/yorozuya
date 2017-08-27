@@ -1,14 +1,13 @@
 package com.luoyu.yorozuya.controller;
 
-import com.luoyu.yorozuya.entity.pojo.Article;
+import com.luoyu.yorozuya.pojo.Article;
+import com.luoyu.yorozuya.pojo.Result;
 import com.luoyu.yorozuya.utils.FileUtil;
-import com.mysql.jdbc.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -51,8 +50,8 @@ public class TestController {
     public String uploadForm(Article article,
                              Map<String, Object> map) {
         if(null != article) {
-            FileUtil.uploadFile(article.getContent().getBytes(), filePath, "test.txt");
-            map.put("msg", "success");
+            Result result = FileUtil.uploadFile(article.getContent().getBytes(), filePath, "test.txt");
+            map.put("msg", result.getSuccess() ? "success" : "error");
         } else {
             map.put("msg", "error");
         }

@@ -1,5 +1,6 @@
 package com.luoyu.yorozuya.utils;
 
+import com.luoyu.yorozuya.pojo.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,9 +15,10 @@ public class FileUtil {
 
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
-    public static void uploadFile(byte[] file, String filePath, String fileName) {
+    public static Result uploadFile(byte[] file, String filePath, String fileName) {
+        String realPath = filePath +"/"+ fileName;//创建文件的实际路径以及文件名
 
-        String realPath = filePath +"/"+ fileName;
+        Result result = new Result();
         File targetFile = new File(realPath);
         FileOutputStream out = null;
         try {
@@ -29,6 +31,8 @@ public class FileUtil {
         } catch (IOException e) {
             logger.error("文件IO流异常");
             e.printStackTrace();
+            result.setInfo("文件IO流异常");
+            result.setSuccess(false);
         } finally {
             if(out != null) {
                 try {
@@ -36,8 +40,11 @@ public class FileUtil {
                 } catch (IOException e) {
                     logger.error("关闭文件输出流异常");
                     e.printStackTrace();
+                    result.setInfo("关闭文件输出流异常");
+                    result.setSuccess(false);
                 }
             }
         }
+        return result;
     }
 }
