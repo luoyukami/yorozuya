@@ -1,5 +1,7 @@
 package com.luoyu.yorozuya.entity;
 
+import org.hibernate.annotations.Where;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,12 +33,12 @@ public class User extends BaseEntity{
     private Long operatorId;//操作员编号
     private String status;//用户状态
 
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "char(20)")
     public String getName() {
         return name;
     }
 
-    @Column(name = "password")
+    @Column(name = "password", columnDefinition = "varchar(256)")
     public String getPassword() {
         return password;
     }
@@ -46,42 +48,41 @@ public class User extends BaseEntity{
         return lastLoginTime;
     }
 
-    @Column(name = "last_ip")
+    @Column(name = "last_ip", columnDefinition = "char(15)")
     public String getLastIp() {
         return lastIp;
     }
 
-    @Column(name = "reg_type")
+    @Column(name = "reg_type", columnDefinition = "char(1)")
     public String getRegType() {
         return regType;
     }
 
-    @Column(name = "mobile")
+    @Column(name = "mobile", columnDefinition = "char(13)")
     public String getMobile() {
         return mobile;
     }
 
-    @Column(name = "email")
+    @Column(name = "email", columnDefinition = "char(64)")
     public String getEmail() {
         return email;
     }
 
-    @Column(name = "wechat")
+    @Column(name = "wechat", columnDefinition = "char(64)")
     public String getWechat() {
         return wechat;
     }
 
-    @Column(name = "user_role_id")
+    @Column(name = "user_role_id", columnDefinition = "char(8)")
     public String getUserRoleId() {
         return userRoleId;
     }
 
-    @Column(name = "icon")
+    @Column(name = "icon", columnDefinition = "varchar(256)")
     public String getIcon() {
         return icon;
     }
 
-    @Column(name = "operator_id")
     public Long getOperatorId() {
         return operatorId;
     }

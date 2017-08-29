@@ -27,17 +27,17 @@ public class UserInfo extends BaseEntity{
         return birthday;
     }
 
-    @Column(name = "sex")
+    @Column(name = "sex", columnDefinition = "char(1)")
     public Character getSex() {
         return sex;
     }
 
-    @Column(name = "real_name")
+    @Column(name = "real_name", columnDefinition = "varchar(20)")
     public String getRealName() {
         return realName;
     }
 
-    @Column(name = "constellation")
+    @Column(name = "constellation", columnDefinition = "char(2)")
     public String getConstellation() {
         return constellation;
     }

@@ -1,7 +1,12 @@
 package com.luoyu.yorozuya.controller;
 
+import com.luoyu.yorozuya.pojo.Article;
+import com.luoyu.yorozuya.pojo.Result;
+import com.luoyu.yorozuya.utils.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,9 +22,12 @@ import java.util.Map;
 @Controller
 public class TestController {
 
+    @Value("${file.path}")
+    private String filePath;
+
     Logger logger = LoggerFactory.getLogger(TestController.class);
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String upload(
             @RequestParam(value = "file") MultipartFile multipartFile,
             Map<String, Object> map) {
@@ -35,6 +43,19 @@ public class TestController {
         } else {
             map.put("msg", "error");
         }
+        return "msg";
+    }
+
+    @RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
+    public String uploadForm(Article article,
+                             Map<String, Object> map) {
+        if(null != article) {
+            Result result = FileUtil.uploadFile(article.getContent().getBytes(), filePath, "test.txt");
+            map.put("msg", result.getSuccess() ? "success" : "error");
+        } else {
+            map.put("msg", "error");
+        }
+
         return "msg";
     }
 

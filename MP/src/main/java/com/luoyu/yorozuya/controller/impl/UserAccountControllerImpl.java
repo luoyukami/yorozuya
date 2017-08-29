@@ -15,19 +15,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(name = "/userAccount")
 public class UserAccountControllerImpl implements UserAccountController {
 
-    @GetMapping(name = "/reg")
-    public void userRegInit() {
 
+    @Override
+    public String signUpInit() {
+        return null;
     }
 
-    @PostMapping(name = "/reg")
-    public void userReg(User user) {
-
+    @Override
+    public String signUp(User user) {
+        return null;
     }
 
-    @GetMapping(name = "/login")
-    public void userLogin(String name, String password) {
+    @Override
+    public String signIn(String name, String password) {
+        return null;
+    }
 
+    @Override
+    public String signOut() {
+        return null;
     }
 
 }

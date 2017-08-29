@@ -1,16 +1,18 @@
 spring:
-#  mvc:
-#    view:
-#      prefix: classpath:/templates/
-#      suffix: .ftl
-#  thymeleaf:
-#    prefix: classpath:/templates/
   profiles:
-    active: dev
+    active: DB
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
+  freemarker:
+    prefix:
+    suffix:  .ftl
+    template-loader-path: classpath:/templates
+logging:
+  level:
+    root: info
 
-
-
+#自定义属性
+file:
+  path:

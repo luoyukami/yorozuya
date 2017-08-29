@@ -10,14 +10,26 @@ import com.luoyu.yorozuya.entity.User;
  */
 public interface UserAccountController {
 
-    void userRegInit();
+    /**
+     * 注册页面初始化
+     * 可废弃
+     */
+    String signUpInit();
 
     /**
-     *
-     * @param user
+     * 用户注册
+     * @param user 表单提交的用户信息
      */
-    void userReg(User user);
+    String signUp(User user);
 
-    void userLogin(String name, String password);
+    /**
+     * 用户登录
+     * @param name 用户名
+     * @param password
+     * @return
+     */
+    String signIn(String name, String password);
+
+    String signOut();
 
 }
