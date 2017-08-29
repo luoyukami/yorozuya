@@ -35,6 +35,7 @@ public class ArticleControllerImpl implements ArticleController{
     @Override
     public Result saveArticle(Article article, User user) {
         Result result = null;
+
         /*表单必填数据校验*/
         if (article.isEmpty()) {
             result = new Result();
@@ -52,9 +53,8 @@ public class ArticleControllerImpl implements ArticleController{
     }
 
     @Override
-    public ArticleListVO searchArticles(Map<String, Object> params) {
-
-        return articleService.searchArticles(params);
+    public ArticleListVO searchArticle(Map<String, Object> params) {
+        return null;
     }
 
     @Override
