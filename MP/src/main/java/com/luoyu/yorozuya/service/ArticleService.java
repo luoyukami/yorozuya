@@ -1,8 +1,16 @@
 package com.luoyu.yorozuya.service;
 
+import com.luoyu.yorozuya.entity.ArticleClass;
+import com.luoyu.yorozuya.entity.ArticleInfo;
 import com.luoyu.yorozuya.entity.User;
 import com.luoyu.yorozuya.pojo.Article;
 import com.luoyu.yorozuya.pojo.Result;
+import com.luoyu.yorozuya.repository.ArticleRepository;
+import com.luoyu.yorozuya.utils.FileUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,6 +22,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArticleService {
 
+    Logger logger = LoggerFactory.getLogger(ArticleService.class);
+
+    @Value("${file.path}")
+    private String FILE_PATH;
+
+    @Autowired
+    private ArticleRepository articleRepository;
+
     /**
      * 保存文章数据
      * @param article 文章数据
@@ -21,6 +37,24 @@ public class ArticleService {
      * @return 操作结果
      */
     public Result saveArticle(Article article, User user) {
+        Result result = new Result();
+        //获取UUID文件名
+        String fileName = FileUtil.getUUID();
+        //上传文件
+        Result uploadResult = FileUtil.uploadFile(article.getContent().getBytes(), FILE_PATH, fileName);
+        //如果文件上传失败则返回
+        if (!uploadResult.getSuccess()) {
+            result.setSuccess(false);
+            result.setInfo(uploadResult.getInfo());
+            return result;
+        }
+        //文件上传 - 数据入库
+        ArticleInfo articleInfo = new ArticleInfo();
+        articleInfo.setAuthorId(user.getId());
+        articleInfo.setArticleName(article.getTitle());
+        articleInfo.setLocation(FILE_PATH +"/"+ fileName);
+        articleInfo.setStatus("1");//初次提交，待审核
+        articleRepository.save(articleInfo);
         return null;
     }
 }

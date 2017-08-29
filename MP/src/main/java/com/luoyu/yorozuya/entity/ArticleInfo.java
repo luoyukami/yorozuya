@@ -14,21 +14,21 @@ import java.sql.Timestamp;
 public class ArticleInfo extends BaseEntity{
 
     private String articleName;
-    private Long authorld;
+    private Long authorId;
     private String location;
     private String status;
     private Long pageView;
     private String classCode;
-    private Long upvote;
+    private Long upVote;
 
     @Column(name = "articleName", columnDefinition = "varchar(64)")
     public String getArticleName() {
         return articleName;
     }
 
-    @Column(name = "authorld", columnDefinition = "varchar(32)")
-    public Long getAuthorld() {
-        return authorld;
+    @Column(name = "authorId", columnDefinition = "bigInt")
+    public Long getAuthorId() {
+        return authorId;
     }
 
     @Column(name = "location", columnDefinition = "varchar(256)")
@@ -51,17 +51,17 @@ public class ArticleInfo extends BaseEntity{
         return classCode;
     }
 
-    @Column(name = "upvote", columnDefinition = "bigInt")
-    public Long getUpvote() {
-        return upvote;
+    @Column(name = "upVote", columnDefinition = "bigInt")
+    public Long getUpVote() {
+        return upVote;
     }
 
     public void setArticleName(String articleName) {
         this.articleName = articleName;
     }
 
-    public void setAuthorld(Long authorld) {
-        this.authorld = authorld;
+    public void setAuthorId(Long authorld) {
+        this.authorId = authorld;
     }
 
     public void setLocation(String location) {
@@ -80,7 +80,7 @@ public class ArticleInfo extends BaseEntity{
         this.classCode = classCode;
     }
 
-    public void setUpvote(Long upvote) {
-        this.upvote = upvote;
+    public void setUpVote(Long upVote) {
+        this.upVote = upVote;
     }
 }

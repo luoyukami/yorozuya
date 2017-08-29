@@ -27,7 +27,7 @@ public abstract class BaseEntity {
         this.id = id;
     }
 
-    @Column(name = "create_time")
+    @Column(name = "create_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -36,7 +36,7 @@ public abstract class BaseEntity {
         this.createTime = createTime;
     }
 
-    @Column(name = "modify_time")
+    @Column(name = "modify_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     public Timestamp getModifyTime() {
         return modifyTime;
     }

@@ -43,7 +43,7 @@ public class User extends BaseEntity{
         return password;
     }
 
-    @Column(name = "last_login_time")
+    @Column(name = "last_login_time", columnDefinition = "TIMESTAMP")
     public Timestamp getLastLoginTime() {
         return lastLoginTime;
     }

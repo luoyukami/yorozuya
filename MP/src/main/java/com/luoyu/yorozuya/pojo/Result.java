@@ -11,13 +11,22 @@ import java.util.List;
 public class Result<T> {
     private Boolean success = true;//操作是否成功的标志
     private String info;//操作返回的信息（可能）
-    private List<T> data;//操作返回的数据（可能）
+    private List<T> list;//操作返回的列表数据（可能）
+    private Object data;//操作返回的单个数据（可能）
 
-    public List<T> getData() {
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
+    public Object getData() {
         return data;
     }
 
-    public void setData(List<T> data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
