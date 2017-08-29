@@ -14,13 +14,14 @@ import javax.persistence.NamedQuery;
  *         2017-08-09 22:05
  */
 @Entity
-public class TestUser extends UUID{
+public class TestUser extends UUID {
 //    @Id
 //    @GeneratedValue
 //    private Long id;
     private String name;
-    private Integer age;
+//    private Integer age;
     private Character sex;
+    private String height;
 
     public TestUser() {
     }
@@ -29,7 +30,7 @@ public class TestUser extends UUID{
 
     public TestUser(String name, Integer age, Character sex) {
         this.name = name;
-        this.age = age;
+//        this.age = age;
         this.sex = sex;
     }
 
@@ -49,13 +50,13 @@ public class TestUser extends UUID{
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+//    public Integer getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(Integer age) {
+//        this.age = age;
+//    }
 
     public Character getSex() {
         return sex;
@@ -64,4 +65,13 @@ public class TestUser extends UUID{
     public void setSex(Character sex) {
         this.sex = sex;
     }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
 }

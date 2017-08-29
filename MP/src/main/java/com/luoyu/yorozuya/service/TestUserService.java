@@ -2,6 +2,7 @@ package com.luoyu.yorozuya.service;
 
 import com.luoyu.yorozuya.entity.TestUser;
 import com.luoyu.yorozuya.repository.TestUserRepository;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class TestUserService {
         return testUserRepository.findBySex(sex);
     }
 
+    @Test
     public List<TestUser> listAll() {
         logger.error("==============error=================");
         return testUserRepository.findAll();

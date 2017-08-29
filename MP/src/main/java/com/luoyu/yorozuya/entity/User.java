@@ -1,14 +1,10 @@
 package com.luoyu.yorozuya.entity;
 
 import org.hibernate.annotations.Where;
+import org.hibernate.annotations.SQLDelete;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
@@ -18,7 +14,10 @@ import java.sql.Timestamp;
  *         2017-08-08 22:04
  */
 @Entity
-public class User extends BaseEntity{
+@Table(name = "user")
+@SQLDelete(sql = "Update user SET status = 'true' where id=?")
+@Where(clause = "status != 'true'")
+public class User extends BaseEntity {
 
     private String name;//用户名
     private String password;//密码
@@ -83,6 +82,7 @@ public class User extends BaseEntity{
         return icon;
     }
 
+    @Column(name = "operator_id")
     public Long getOperatorId() {
         return operatorId;
     }

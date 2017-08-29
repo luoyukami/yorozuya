@@ -1,6 +1,8 @@
 package com.luoyu.yorozuya.controller;
 
+import com.luoyu.yorozuya.entity.User;
 import com.luoyu.yorozuya.entity.UserSignUp;
+import com.luoyu.yorozuya.service.UserService;
 import com.luoyu.yorozuya.service.UserSignUpService;
 import com.luoyu.yorozuya.utils.FileUtil;
 import com.luoyu.yorozuya.vo.TestJsonVo;
@@ -9,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by 落羽 on 2017/8/17.
@@ -29,6 +34,9 @@ public class UserSignUpController {
 
     @Autowired
     UserSignUpService userSignUpService;
+
+    @Autowired
+    UserService userService;
 
 
 
@@ -46,6 +54,31 @@ public class UserSignUpController {
         TestJsonVo testJsonVo = new TestJsonVo();
         testJsonVo = userSignUpService.changeJson(testJsonVo);
         return testJsonVo;
+    }
+
+    // 测试软删除  测试分页
+    @GetMapping(value = "/getusers")
+    public Page<User> getusers(@RequestParam Integer pagesize) {
+        return userService.findUser(pagesize);
+    }
+    @DeleteMapping(value = "/users")
+    public String deleteUser(@RequestParam Integer id){
+        userService.deleteUser(id);
+        return ("执行删除" + id);
+    }
+    // 测试登录验证
+    @PostMapping(value = "/userLogin")
+    public  String userLogin(@RequestParam String name,
+                             @RequestParam String password) {
+        User user = userService.findAUser(name, password);
+        if (user != null) {
+            boolean a = Objects.equals(user.getName(), name);
+            boolean b = Objects.equals(user.getPassword(), password);
+            if (a && b) {
+                return ("登录成功, 欢迎您" + name);
+            }
+        }
+        return ("用户不存在");
     }
 
 
@@ -81,49 +114,4 @@ public class UserSignUpController {
         return "上传失败";
     }
 
-    // http://blog.csdn.net/change_on/article/details/59529034
-//    @PostMapping(value = "/imageUpload")
-//    public @ResponseBody String imageUpload(@RequestParam("file") MultipartFile file,
-//                              HttpServletRequest request) {
-//        if (file.isEmpty()) {
-//            return "文件为空";
-//        }
-//        // 文件名
-//        String fileName = file.getOriginalFilename();
-//        System.out.println(fileName);
-//        // 后缀名
-//        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-//        System.out.println(suffixName);
-//        // 存储路径
-//        String filePath = "D://upload//";
-//        // 解决中文问题，liunx下中文路径，图片显示问题
-//        // fileName = UUID.randomUUID() + suffixName;
-//        File dest = new File(filePath + fileName);
-//        // 检测是否存在目录
-//        if (!dest.getParentFile().exists()) {
-//            dest.getParentFile().mkdirs();
-//        }
-//        try {
-//            file.transferTo(dest);
-//            return "上传成功";
-//        }catch (IllegalStateException e) {
-//            e.printStackTrace();
-//        }catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return "上传失败";
-//
-//        String contentType = file.getContentType();
-//        String fileName = file.getOriginalFilename();
-//        /*System.out.println("fileName-->" + fileName);
-//        System.out.println("getContentType-->" + contentType);*/
-//        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-//        try {
-//            FileUtil.uploadFile(file.getBytes(), filePath, fileName);
-//        } catch (Exception e) {
-//            // TODO: handle exception
-//        }
-//        //返回json
-//        return "uploadimg success";
-//    }
 }
