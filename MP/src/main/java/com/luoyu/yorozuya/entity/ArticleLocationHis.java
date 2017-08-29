@@ -11,24 +11,17 @@ import java.sql.Timestamp;
  * 文章地址历史表，存放文章修改的历史信息
  */
 @Entity
-public class ArticleLocationHis {
+public class ArticleLocationHis extends BaseEntity{
 
-    private int id;
-    private int articleId;
+    private Long articleId;
     private String oldLocation;
     private String newLocation;
     private int changeCount;
-    private Timestamp modifyTime;
     private Long operatorId;
 
-    @Id
-    @GeneratedValue
-    public int getId() {
-        return id;
-    }
 
-    @Column(name = "articleId")
-    public int getArticleId() {
+    @Column(name = "articleId", columnDefinition = "bigInt")
+    public Long getArticleId() {
         return articleId;
     }
 
@@ -47,21 +40,13 @@ public class ArticleLocationHis {
         return changeCount;
     }
 
-    @Column(name = "modifyTime")
-    public Timestamp getModifyTime() {
-        return modifyTime;
-    }
 
     @Column(name = "operatorId", columnDefinition = "varchar(32)")
     public Long getOperatorId() {
         return operatorId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setArticleId(int articleId) {
+    public void setArticleId(Long articleId) {
         this.articleId = articleId;
     }
 
@@ -75,10 +60,6 @@ public class ArticleLocationHis {
 
     public void setChangeCount(int changeCount) {
         this.changeCount = changeCount;
-    }
-
-    public void setModifyTime(Timestamp modifyTime) {
-        this.modifyTime = modifyTime;
     }
 
     public void setOperatorId(Long operatorId) {
