@@ -6,7 +6,7 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
   profiles:
-    active: DB
+    active: dev
   jpa:
     hibernate:
       ddl-auto: none
@@ -19,6 +19,20 @@ logging:
   level:
     root: info
 
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  tokenHead: "Bearer"
+  route:
+    anthentication:
+      path: "auth"
+      refresh: "auth/refresh"
+      register: "auth/register"
+    user:
+      path: "user"
+    role:
+      path: "role"
 #自定义属性
 file:
   path:
