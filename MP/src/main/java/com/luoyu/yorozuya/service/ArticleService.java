@@ -5,6 +5,8 @@ import com.luoyu.yorozuya.entity.ArticleInfo;
 import com.luoyu.yorozuya.entity.User;
 import com.luoyu.yorozuya.pojo.Article;
 import com.luoyu.yorozuya.pojo.Result;
+import com.luoyu.yorozuya.pojo.vo.ArticleListVO;
+import com.luoyu.yorozuya.pojo.vo.ArticleVO;
 import com.luoyu.yorozuya.repository.ArticleRepository;
 import com.luoyu.yorozuya.utils.FileUtil;
 import org.slf4j.Logger;
@@ -68,7 +70,29 @@ public class ArticleService {
         return result;
     }
 
-    public Result<Article> searchArticle(Map<String, Object> params) {
-        return null;
+    /**
+     * 搜索文章
+     * @param params 筛选参数
+     * @return articleListVO
+     */
+    public ArticleListVO searchArticles(Map<String, Object> params) {
+        ArticleListVO articleListVO = new ArticleListVO();
+        articleListVO.setItems(articleRepository.findAll());
+        return articleListVO;
     }
+
+    public ArticleVO getArtcileById(String Id) {
+        ArticleVO articleVO = new ArticleVO();
+
+        ArticleInfo articleInfo = articleRepository.findOne(Long.parseLong(Id));//获取文章信息
+        Result result = FileUtil.getFileContent(articleInfo.getLocation());//获取文章内容
+        if (result.getSuccess()) {
+            articleVO.setContent((String) result.getData());
+        }
+
+        articleVO.setItem(articleInfo);
+
+        return articleVO;
+    }
+
 }
