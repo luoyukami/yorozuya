@@ -72,7 +72,7 @@ public class UserSignUpController {
                              @RequestParam String password) {
         User user = userService.findAUser(name, password);
         if (user != null) {
-            boolean a = Objects.equals(user.getName(), name);
+            boolean a = Objects.equals(user.getUsername(), name);
             boolean b = Objects.equals(user.getPassword(), password);
             if (a && b) {
                 return ("登录成功, 欢迎您" + name);

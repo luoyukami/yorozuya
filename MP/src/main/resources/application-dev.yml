@@ -6,3 +6,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/dbgirl?serverTimezone=UTC&useSSL=false
     username: root
     password: 1234
+
+
+file:
+  path: D://upload

@@ -1,9 +1,9 @@
 spring:
   profiles:
-    active: DB
+    active: dev
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: true
   freemarker:
     prefix:
@@ -13,6 +13,17 @@ logging:
   level:
     root: info
 
-#自定义属性
-file:
-  path:
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  tokenHead: "Bearer"
+  route:
+    anthentication:
+      path: "auth"
+      refresh: "auth/refresh"
+      register: "auth/register"
+    user:
+      path: "user"
+    role:
+      path: "role"

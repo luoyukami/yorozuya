@@ -28,7 +28,7 @@ public class UserService {
     }
 
     public User findAUser(String name, String password){
-        return userRepository.findauser(name, password);
+        return userRepository.findAUser(name, password);
     }
 
     public int deleteUser(Integer id){
