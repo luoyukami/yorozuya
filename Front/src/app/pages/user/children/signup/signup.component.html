@@ -1,0 +1,82 @@
+<form novalidate (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <label>
+    <span>userName</span>
+    <input
+      type="text"
+      placeholder="请输入用户名"
+      required
+      minlength="3"
+      name="userName"
+      #userName="ngModel"
+      [(ngModel)]="user.userName">
+  </label>
+  <div *ngIf="userName.errors?.required && userName.touched"
+       class="error">
+    用户名必须输入哦
+  </div>
+  <div *ngIf="userName.errors?.minlength && userNmae.touched"
+       class="error">
+    用户名不能小于3位呢
+  </div>
+  <div ngModelGroup="account">
+    <label>
+      <span>Email address</span>
+      <input
+        type="email"
+        placeholder="请输入邮箱"
+        required
+        name="email"
+        #userEmail="ngModel"
+        [(ngModel)]="user.account.email">
+    </label>
+    <div *ngIf="userEmail.errors?.required && userEmail.touched"
+         class="error">
+      请输入邮箱
+    </div>
+    <label>
+      <span>password</span>
+      <input
+        type="password"
+        placeholder="请输入密码"
+        required
+        minlength="6"
+        name="password"
+        #userPassword="ngModel"
+        [(ngModel)]="user.account.password">
+    </label>
+    <div *ngIf="userPassword.errors?.required && userPassword.touched"
+         class="error">
+      密码不能为空
+    </div>
+    <div *ngIf="userPassword.errors?.minlength && userPassword.touched"
+         class="error">
+      密码不能小于6位
+    </div>
+    <label>
+      <span>password</span>
+      <input
+        type="password"
+        placeholder="再次输入密码"
+        required
+        minlength="6"
+        name="confirmPW"
+        #userConfirmPW="ngModel"
+        [(ngModel)]="user.account.confirmPW">
+    </label>
+    <div *ngIf="userConfirmPW.errors?.required && userConfirmPW.touched"
+         class="error">
+      输入确认密码
+    </div>
+    <div *ngIf="userConfirmPW.errors?.minlength && userConfirmPW.touched"
+         class="error">
+      密码不能小于6位
+    </div>
+    <div *ngIf="userConfirmPW != userPassword && userConfirmPW.touched"
+         class="error">
+      老哥你两次输入不一样
+    </div>
+  </div>
+  <button type="submit" [disabled]="form.invalid">注册</button>
+  <p>{{ form.value | json }}</p>
+</form>
+

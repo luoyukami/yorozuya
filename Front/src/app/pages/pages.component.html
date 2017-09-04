@@ -1,0 +1,57 @@
+<!--顶部导航栏-->
+<div class="navbar navbar-fixed-top main-nav" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand">
+        万事屋
+      </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" aria-expanded="false">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active" class="dropdown">
+          <a>技术</a>
+        </li>
+        <li class="dropdown">
+          <a>音乐</a>
+        </li>
+        <li class="dropdown">
+          <a>游戏</a>
+        </li>
+        <li class="dropdown">
+          <a>番剧</a>
+        </li>
+        <li class="dropdown">
+          <a>杂谈</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a routerLink="/pages/user/login">登录</a>
+        </li>
+        <li class="dropdown">
+          <a routerLink="/pages/user/signup">注册</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--内容-->
+<div class="container main-container">
+  <router-outlet></router-outlet>
+</div>
+
+<!--底部-->
+<div class="footer bs-footer">
+  <div class="container">
+    <div class="row">
+      <p>by luoyu</p>
+    </div>
+  </div>
+</div>
