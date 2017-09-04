@@ -15,38 +15,47 @@ import javax.persistence.*;
 @SQLDelete(sql = "UPDATE sys_org SET is_delete = 0 where id=?")
 @Where(clause = "is_delete = 1")
 public class Organization extends BaseEntity {
-
-    private Organization parent; // 父级结构
-    private String parentIds; // 父级编号树
-    private String name; // 结构名称，例如(游戏区)
-    private String code; // 结构编码(不一定要有)
-    private boolean isDelete; // 是否弃用
-
     @ManyToOne
     @JoinColumn(name = "parent_id", columnDefinition = "varchar(255)")
     @JsonIgnore
+    private Organization parent; // 父级结构
+    @Column(name = "parent_ids", columnDefinition = "varchar(255)")
+    private String parentIds; // 父级编号树
+    @Column(name = "org_name", columnDefinition = "char(20)")
+    private String name; // 结构名称，例如(游戏区)
+    @Column(name = "org_code", columnDefinition = "char(30)")
+    private String code; // 结构编码(不一定要有)
+    @Column(name = "is_delete", columnDefinition = "bit(1) default 1")
+    private boolean isDelete; // 是否弃用z
+
+
     public Organization getParent() {
         return parent;
     }
-    @Column(name = "parent_ids", columnDefinition = "varchar(255)")
+
     public String getParentIds() {
         return parentIds;
     }
-    @Column(name = "org_name", columnDefinition = "char(20)")
+
     public String getName() {
         return name;
     }
-    @Column(name = "org_code", columnDefinition = "char(30)")
+
     public String getCode() {
         return code;
     }
-    @Column(name = "is_delete", columnDefinition = "bit(1) default 1")
-    public boolean getIsDelete() {
-        return isDelete;
-    }
+
 
     public void setParent(Organization parent) {
         this.parent = parent;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public void setParentIds(String parentIds) {

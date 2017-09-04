@@ -1,6 +1,5 @@
 package com.luoyu.yorozuya.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luoyu.yorozuya.pojo.publicEnum.EnumDataScope;
 import com.luoyu.yorozuya.pojo.publicEnum.EnumRoleType;
 import org.hibernate.annotations.SQLDelete;
@@ -18,44 +17,50 @@ import java.util.Set;
 @SQLDelete(sql = "UPDATE sys_role SET is_delete = 0 where id=?")
 @Where(clause = "is_delete = 1")
 public class Role extends BaseEntity {
-    private Set<Organization> organizations; // 角色和结构
-    private Set<Authority> authorities; // 角色和权限
-    private String name; // 角色名称
-    private String code; // 角色代码
-    private EnumRoleType roleType; // 权限角色类型
-    private EnumDataScope dataScope; // 访问数据范围
-    private boolean isDelete; // 是否删除 1代表否
-
     @ManyToMany
     @JoinTable(name = "sys_role_org", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "org_id"))
+    private Set<Organization> organizations; // 角色和结构
+    @ManyToMany
+    @JoinTable(name = "sys_role_auth", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "auth_id"))
+    private Set<Authority> authorities; // 角色和权限
+    @Column(name = "name", columnDefinition = "char(20)")
+    private String name; // 角色名称
+    @Column(name = "code", columnDefinition = "char(30)")
+    private String code; // 角色代码
+    @Column(name = "role_type", columnDefinition = "char(30)")
+    @Enumerated(EnumType.STRING)
+    private EnumRoleType roleType; // 权限角色类型
+    @Column(name = "data_scope", columnDefinition = "char(30)")
+    @Enumerated(EnumType.STRING)
+    private EnumDataScope dataScope; // 访问数据范围
+    @Column(name = "is_delete", columnDefinition = "bit(1) default 1")
+    private boolean isDelete; // 是否删除 1代表否
+
+
     public Set<Organization> getOrganizations() {
         return organizations;
     }
-    @ManyToMany
-    @JsonIgnore
-    @JoinTable(name = "sys_role_auth", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "auth_id"))
+
     public Set<Authority> getAuthorities() {
         return authorities;
     }
-    @Column(name = "name", columnDefinition = "char(20)")
+
     public String getName() {
         return name;
     }
-    @Column(name = "code", columnDefinition = "char(30)")
+
     public String getCode() {
         return code;
     }
-    @Column(name = "role_type", columnDefinition = "char(30)")
-    @Enumerated(EnumType.STRING)
+
     public EnumRoleType getRoleType() {
         return roleType;
     }
-    @Column(name = "data_scope", columnDefinition = "char(30)")
-    @Enumerated(EnumType.STRING)
+
     public EnumDataScope getDataScope() {
         return dataScope;
     }
-    @Column(name = "is_delete", columnDefinition = "bit(1) default 1")
+
     public boolean isDelete() {
         return isDelete;
     }

@@ -16,25 +16,33 @@ import javax.persistence.Table;
 @SQLDelete(sql = "Update sys_auth SET is_delete = 0 where id=?")
 @Where(clause = "is_delete = 1")
 public class Authority extends BaseEntity {
+    @Column(name = "code", columnDefinition = "char(30)")
     private String code; //权限代码（英文名称 例如 AUTH_ALL）
+    @Column(name = "name", columnDefinition = "char(20)")
     private String name; //中文名称
+    @Column(name = "is_delete", columnDefinition = "bit(1) default 1")
     private boolean isDelete; //是否弃用
 
-    @Column(name = "code", columnDefinition = "char(30)")
+
     public String getCode() {
         return code;
     }
-    @Column(name = "name", columnDefinition = "char(20)")
+
     public String getName() {
         return name;
     }
-    @Column(name = "is_delete", columnDefinition = "bit(1) default 1")
-    public boolean getIsDelete() {
-        return isDelete;
-    }
+
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 
     public void setName(String name) {
