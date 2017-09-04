@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * 文章相关业务类
  *
@@ -27,6 +29,9 @@ public class ArticleService {
     @Value("${file.path}")
     private String FILE_PATH;
 
+    @Value("${file.type}")
+    private String FILE_TYPE;
+
     @Autowired
     private ArticleRepository articleRepository;
 
@@ -39,7 +44,7 @@ public class ArticleService {
     public Result saveArticle(Article article, User user) {
         Result result = new Result();
         //获取UUID文件名
-        String fileName = FileUtil.getUUID();
+        String fileName = FileUtil.getUUID() + FILE_TYPE;
         //上传文件
         Result uploadResult = FileUtil.uploadFile(article.getContent().getBytes(), FILE_PATH, fileName);
         //如果文件上传失败则返回
@@ -48,13 +53,22 @@ public class ArticleService {
             result.setInfo(uploadResult.getInfo());
             return result;
         }
-        //文件上传 - 数据入库
-        ArticleInfo articleInfo = new ArticleInfo();
-        articleInfo.setAuthorId(user.getId());
-        articleInfo.setArticleName(article.getTitle());
-        articleInfo.setLocation(FILE_PATH +"/"+ fileName);
-        articleInfo.setStatus("1");//初次提交，待审核
-        articleRepository.save(articleInfo);
+        try {
+            //文件上传 - 数据入库
+            ArticleInfo articleInfo = new ArticleInfo();
+            articleInfo.setAuthorId(user.getId());
+            articleInfo.setArticleName(article.getTitle());
+            articleInfo.setLocation(FILE_PATH + "/" + fileName);
+            articleInfo.setStatus("1");//初次提交，待审核
+            articleRepository.save(articleInfo);
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setInfo("插入文件数据失败！");
+        }
+        return result;
+    }
+
+    public Result<Article> searchArticle(Map<String, Object> params) {
         return null;
     }
 }
