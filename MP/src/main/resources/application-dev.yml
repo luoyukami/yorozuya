@@ -1,0 +1,11 @@
+server:
+   port: 8081
+
+###########
+#自定义属性#
+###########
+
+#文件上传路径
+file:
+  path: /Users/gx/git/yorozuya/MP/src/main/resources/file
+  type: .md
