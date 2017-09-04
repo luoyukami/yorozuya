@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
@@ -15,6 +16,8 @@ import java.util.UUID;
 public class FileUtil {
 
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
+
+    private static Integer READ_SIZE = 1024 * 1024 * 4;//每次读取文件的最大byte数
 
     /**
      * 文件上传
@@ -54,6 +57,44 @@ public class FileUtil {
             }
         }
         return result;
+    }
+
+    /**
+     * 读取文章内容
+     * @param filePath
+     * @param fileName
+     * @return
+     */
+    public static Result getFileContent(String filePath, String fileName) {
+        String realPath = filePath +"/"+ fileName;
+        Result result = new Result();
+        File file = new File(realPath);
+        FileInputStream inputStream = null;
+        String content = null;
+        try {
+            inputStream = new FileInputStream(file);
+            byte[] bytes = new byte[READ_SIZE];
+            StringBuffer stb = new StringBuffer();
+            while ((inputStream.read(bytes)) != -1) {
+                stb.append(bytes);
+            }
+            content = stb.toString();
+        } catch (IOException e) {
+            result.setSuccess(false);
+            result.setInfo("文件IO流异常"+ e.getMessage());
+            logger.error("==========读取文件失败============");
+            e.printStackTrace();
+        }
+        if (null != content && !content.isEmpty()) {
+            result.setData(content);
+        } else {
+            result.setData("文件内容为空");
+        }
+        return result;
+    }
+
+    public static Result getFileContent(String realPath) {
+        return getFileContent(realPath, null);
     }
 
     /**
