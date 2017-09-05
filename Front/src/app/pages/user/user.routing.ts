@@ -1,5 +1,5 @@
 import {ModuleWithProviders} from '@angular/core';
-import {RouterModule, Routes} from "@angular/router";
+import {RouterModule, Routes} from '@angular/router';
 import {UserComponent} from './user.component';
 
 const routes: Routes = [
@@ -14,4 +14,4 @@ const routes: Routes = [
   }
 ];
 
-export const UserRouting: ModuleWithProviders = RouterModule.forChild(routes)
+export const UserRouting: ModuleWithProviders = RouterModule.forChild(routes);

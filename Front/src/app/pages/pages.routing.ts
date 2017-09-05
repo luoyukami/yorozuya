@@ -11,6 +11,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'demo', pathMatch: 'full'},
       {path: 'demo', loadChildren: './demo/demo.module#DemoModule'},
       {path: 'user', loadChildren: './user/user.module#UserModule'},
+      {path: 'post', loadChildren: './post/post.module#PostModule'},
       {path: '**', component: PageNotFoundComponent}
     ]
   }
