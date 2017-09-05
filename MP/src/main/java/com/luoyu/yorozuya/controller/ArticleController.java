@@ -35,7 +35,7 @@ public interface ArticleController {
      * @param params 搜索条件
      * @return 文章列表VO
      */
-    ArticleListVO searchArticle(Map<String, Object> params);
+    ArticleListVO searchArticles(Map<String, Object> params);
 
     /**
      * 获取文章内容等数据 - by id文章编号

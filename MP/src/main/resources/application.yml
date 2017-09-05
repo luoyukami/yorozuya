@@ -1,9 +1,15 @@
 spring:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .ftl
+  thymeleaf:
+    prefix: classpath:/templates/
   profiles:
     active: dev
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     show-sql: true
   freemarker:
     prefix:
@@ -17,9 +23,9 @@ jwt:
   header: Authorization
   secret: mySecret
   expiration: 604800
-  tokenHead: "Bearer "
+  tokenHead: "Bearer"
   route:
-    authentication:
+    anthentication:
       path: "auth"
       refresh: "auth/refresh"
       register: "auth/register"
@@ -27,3 +33,6 @@ jwt:
       path: "user"
     role:
       path: "role"
+#自定义属性
+file:
+  path:

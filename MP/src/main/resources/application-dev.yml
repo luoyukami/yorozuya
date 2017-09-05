@@ -1,12 +1,16 @@
 server:
-   port: 8080
+   port: 8081
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/dbgirl?serverTimezone=UTC&useSSL=false
     username: root
     password: 1234
+###########
+#自定义属性#
+###########
 
-
+#文件上传路径
 file:
-  path: D://upload
+  path: /Users/gx/git/yorozuya/MP/src/main/resources/file
+  type: .md

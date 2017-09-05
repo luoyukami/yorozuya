@@ -13,9 +13,9 @@ import java.sql.Timestamp;
 @Entity
 public class ArticleClass extends BaseEntity{
 
-    private String classCode;
-    private String classNameCN;
-    private String classNameEN;
+    private String classCode;//分类代码
+    private String classNameCN;//分类中文名
+    private String classNameEN;//分类英文名
     private String status;
     private String classContent;
     private Long operatorId;

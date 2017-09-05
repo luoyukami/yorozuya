@@ -11,16 +11,14 @@ import java.sql.Timestamp;
  */
 @MappedSuperclass
 public abstract class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;//主键，自增长
-    @Column(name = "create_time")
     private Timestamp createTime;//数据创建时间
-    @Column(name = "modify_time")
     private Timestamp modifyTime;//数据修改时间
 
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -29,7 +27,7 @@ public abstract class BaseEntity {
         this.id = id;
     }
 
-
+    @Column(name = "create_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -38,7 +36,7 @@ public abstract class BaseEntity {
         this.createTime = createTime;
     }
 
-
+    @Column(name = "modify_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     public Timestamp getModifyTime() {
         return modifyTime;
     }
