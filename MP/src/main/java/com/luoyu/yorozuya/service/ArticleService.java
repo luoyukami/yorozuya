@@ -80,6 +80,11 @@ public class ArticleService {
         return articleListVO;
     }
 
+    /**
+     * 根据文章编号获取文章内容
+     * @param Id
+     * @return
+     */
     public ArticleVO getArticleById(Long Id) {
         ArticleVO articleVO = new ArticleVO();
 

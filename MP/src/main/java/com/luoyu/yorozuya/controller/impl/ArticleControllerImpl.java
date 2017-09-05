@@ -11,8 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -22,7 +21,7 @@ import java.util.Map;
  * @author ganxiang20970
  *         2017-08-27 21:04
  */
-@RequestMapping("/article")
+@RequestMapping("/articles")
 @Controller
 public class ArticleControllerImpl implements ArticleController{
 
@@ -31,8 +30,9 @@ public class ArticleControllerImpl implements ArticleController{
 
     Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
-    @PostMapping("/save")
+
     @Override
+    @PostMapping("/")
     public Result saveArticle(Article article, User user) {
         Result result = null;
         /*表单必填数据校验*/
@@ -47,18 +47,20 @@ public class ArticleControllerImpl implements ArticleController{
     }
 
     @Override
-    public Result updateArtcile(Article article, User user) {
+    @PutMapping("/{id}")
+    public Result updateArtcile(@PathVariable Long id,Article article, User user) {
         return null;
     }
 
     @Override
-    public ArticleListVO searchArticles(Map<String, Object> params) {
-
+    @GetMapping("/")
+    public @ResponseBody ArticleListVO searchArticles(Map<String, Object> params) {
         return articleService.searchArticles(params);
     }
 
     @Override
-    public ArticleVO getArticle(Long id) {
+    @GetMapping("/{id}")
+    public @ResponseBody ArticleVO getArticle(@PathVariable Long id) {
         return articleService.getArticleById(id);
     }
 }
