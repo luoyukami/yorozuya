@@ -1,6 +1,5 @@
 package com.luoyu.yorozuya.service;
 
-import com.luoyu.yorozuya.entity.ArticleClass;
 import com.luoyu.yorozuya.entity.ArticleInfo;
 import com.luoyu.yorozuya.entity.User;
 import com.luoyu.yorozuya.pojo.Article;
@@ -81,10 +80,10 @@ public class ArticleService {
         return articleListVO;
     }
 
-    public ArticleVO getArtcileById(String Id) {
+    public ArticleVO getArticleById(Long Id) {
         ArticleVO articleVO = new ArticleVO();
 
-        ArticleInfo articleInfo = articleRepository.findOne(Long.parseLong(Id));//获取文章信息
+        ArticleInfo articleInfo = articleRepository.findOne(Id);//获取文章信息
         Result result = FileUtil.getFileContent(articleInfo.getLocation());//获取文章内容
         if (result.getSuccess()) {
             articleVO.setContent((String) result.getData());
