@@ -4,25 +4,17 @@ import com.luoyu.yorozuya.entity.User;
 import com.luoyu.yorozuya.entity.UserSignUp;
 import com.luoyu.yorozuya.service.UserService;
 import com.luoyu.yorozuya.service.UserSignUpService;
-import com.luoyu.yorozuya.utils.FileUtil;
 import com.luoyu.yorozuya.vo.TestJsonVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
 import org.springframework.data.domain.Page;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.List;
 
 /**
  * Created by 落羽 on 2017/8/17.

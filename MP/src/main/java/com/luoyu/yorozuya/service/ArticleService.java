@@ -1,6 +1,5 @@
 package com.luoyu.yorozuya.service;
 
-import com.luoyu.yorozuya.entity.ArticleClass;
 import com.luoyu.yorozuya.entity.ArticleInfo;
 import com.luoyu.yorozuya.entity.User;
 import com.luoyu.yorozuya.pojo.Article;

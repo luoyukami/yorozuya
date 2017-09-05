@@ -2,8 +2,6 @@ package com.luoyu.yorozuya.controller.impl;
 
 import com.luoyu.yorozuya.controller.UserAccountController;
 import com.luoyu.yorozuya.entity.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**

@@ -2,14 +2,10 @@ package com.luoyu.yorozuya.service;
 
 import com.luoyu.yorozuya.entity.User;
 import com.luoyu.yorozuya.repository.UserRepository;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * 用户业务实现类

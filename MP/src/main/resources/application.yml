@@ -9,7 +9,7 @@ spring:
     active: dev
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
     show-sql: true
   freemarker:
     prefix:
@@ -23,9 +23,9 @@ jwt:
   header: Authorization
   secret: mySecret
   expiration: 604800
-  tokenHead: "Bearer"
+  tokenHead: "Bearer "
   route:
-    anthentication:
+    authentication:
       path: "auth"
       refresh: "auth/refresh"
       register: "auth/register"
