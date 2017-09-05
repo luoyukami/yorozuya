@@ -24,11 +24,12 @@ public interface ArticleController {
 
     /**
      * 修改文章
+     * @param id 文章编号
      * @param article 文章相关数据
      * @param user 发起请求的用户
      * @return 修改结果
      */
-    Result updateArtcile(Article article, User user);
+    Result updateArtcile(Long id,Article article, User user);
 
     /**
      * 搜索文章
