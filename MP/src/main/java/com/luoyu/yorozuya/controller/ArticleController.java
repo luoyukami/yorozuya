@@ -42,5 +42,5 @@ public interface ArticleController {
      * @param id 文章编号
      * @return 文章VO
      */
-    ArticleVO getArticle(Integer id);
+    ArticleVO getArticle(Long id);
 }
