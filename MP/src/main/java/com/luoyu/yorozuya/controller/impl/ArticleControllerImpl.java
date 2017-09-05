@@ -58,7 +58,7 @@ public class ArticleControllerImpl implements ArticleController{
     }
 
     @Override
-    public ArticleVO getArticle(Integer id) {
-        return null;
+    public ArticleVO getArticle(Long id) {
+        return articleService.getArticleById(id);
     }
 }
