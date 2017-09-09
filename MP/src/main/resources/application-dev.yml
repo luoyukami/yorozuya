@@ -2,15 +2,15 @@ server:
    port: 8081
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/dbgirl?serverTimezone=UTC&useSSL=false
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/yorozuya?serverTimezone=UTC&useSSL=false
     username: root
-    password: 1234
+    password: 123456
 ###########
 #自定义属性#
 ###########
 
 #文件上传路径
 file:
-  path: /Users/gx/git/yorozuya/MP/src/main/resources/file
+  path: /Users/zhangjin/IdeaProjects/myself/yorozuya/MP/src/main/resources/file
   type: .md

@@ -68,14 +68,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js",
                         "/assets/**",
                         "/**/*.ttf",
-                        "/**/*.woff*"
+                        "/**/*.woff*",
+                        //测试加上
+                        "/**"
+
                 ).permitAll()
                 // 用户和菜单接口开放
                 .antMatchers("/user/**", "/menu/**").permitAll()
                 // 请求token的验证接口开放
                 .antMatchers(
                         HttpMethod.POST,
-                        "/auth", "/auth/register"
+                        "/auth", "/auth/register",
+                        //测试用
+                        "/**"
                 ).permitAll()
                 // 其余的需要验证
                 .anyRequest().authenticated();

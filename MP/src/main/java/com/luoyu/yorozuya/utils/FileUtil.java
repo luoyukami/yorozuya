@@ -17,7 +17,7 @@ public class FileUtil {
 
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
-    private static Integer READ_SIZE = 1024 * 1024 * 4;//每次读取文件的最大byte数
+    private static Integer READ_SIZE = 1024 * 1024;//每次读取文件的最大byte数
 
     /**
      * 文件上传
@@ -66,7 +66,7 @@ public class FileUtil {
      * @return
      */
     public static Result getFileContent(String filePath, String fileName) {
-        String realPath = filePath +"/"+ fileName;
+        String realPath = filePath + (fileName == null ? "": "/" + fileName);
         Result result = new Result();
         File file = new File(realPath);
         FileInputStream inputStream = null;
@@ -76,7 +76,7 @@ public class FileUtil {
             byte[] bytes = new byte[READ_SIZE];
             StringBuffer stb = new StringBuffer();
             while ((inputStream.read(bytes)) != -1) {
-                stb.append(bytes);
+                stb.append(new String(bytes));
             }
             content = stb.toString();
         } catch (IOException e) {

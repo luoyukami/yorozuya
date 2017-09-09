@@ -33,7 +33,7 @@ public class ArticleControllerImpl implements ArticleController{
 
     @Override
     @PostMapping("/")
-    public Result saveArticle(Article article, User user) {
+    public @ResponseBody Result saveArticle(Article article, User user) {
         Result result = null;
         /*表单必填数据校验*/
         if (article.isEmpty()) {
@@ -48,7 +48,7 @@ public class ArticleControllerImpl implements ArticleController{
 
     @Override
     @PutMapping("/{id}")
-    public Result updateArtcile(@PathVariable Long id,Article article, User user) {
+    public @ResponseBody Result updateArtcile(@PathVariable Long id,Article article, User user) {
         return null;
     }
 
