@@ -34,15 +34,18 @@ public class Role extends BaseEntity {
     @Column(name = "name", columnDefinition = "char(20) comment '角色名称'")
     private String name; // 角色名称
 
-    @Column(name = "code", columnDefinition = "char(30)")
+    @Column(name = "code", columnDefinition = "char(30) comment '角色代码'")
     private String code; // 角色代码
-    @Column(name = "role_type", columnDefinition = "char(30)")
+
+    @Column(name = "role_type", columnDefinition = "char(30) comment '权限角色类型'")
     @Enumerated(EnumType.STRING)
     private EnumRoleType roleType; // 权限角色类型
-    @Column(name = "data_scope", columnDefinition = "char(30)")
+
+    @Column(name = "data_scope", columnDefinition = "char(30) comment '访问数据范围'")
     @Enumerated(EnumType.STRING)
     private EnumDataScope dataScope; // 访问数据范围
-    @Column(name = "is_delete", columnDefinition = "bit(1) default 1")
+
+    @Column(name = "is_delete", columnDefinition = "bit(1) default 1 comment '删除表示 0表示是，1表示否'")
     private boolean isDelete; // 是否删除 1代表否
 
 
