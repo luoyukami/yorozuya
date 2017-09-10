@@ -1,10 +1,4 @@
 spring:
-  mvc:
-    view:
-      prefix: classpath:/templates/
-      suffix: .ftl
-  thymeleaf:
-    prefix: classpath:/templates/
   profiles:
     active: dev
   jpa:
