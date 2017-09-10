@@ -22,7 +22,7 @@ import java.util.Map;
  *         2017-08-27 21:04
  */
 @RequestMapping("/articles")
-@RestController
+@Controller
 public class ArticleControllerImpl implements ArticleController{
 
     @Autowired
@@ -33,7 +33,7 @@ public class ArticleControllerImpl implements ArticleController{
 
     @Override
     @PostMapping("/")
-    public Result saveArticle(Article article, User user) {
+    public @ResponseBody Result saveArticle(Article article, User user) {
         Result result = null;
         /*表单必填数据校验*/
         if (article.isEmpty()) {
@@ -48,19 +48,19 @@ public class ArticleControllerImpl implements ArticleController{
 
     @Override
     @PutMapping("/{id}")
-    public Result updateArtcile(@PathVariable Long id,Article article, User user) {
+    public @ResponseBody Result updateArtcile(@PathVariable Long id,Article article, User user) {
         return null;
     }
 
     @Override
     @GetMapping("/")
-    public ArticleListVO searchArticles(Map<String, Object> params) {
+    public @ResponseBody ArticleListVO searchArticles(Map<String, Object> params) {
         return articleService.searchArticles(params);
     }
 
     @Override
     @GetMapping("/{id}")
-    public ArticleVO getArticle(@PathVariable Long id) {
+    public @ResponseBody ArticleVO getArticle(@PathVariable Long id) {
         return articleService.getArticleById(id);
     }
 }

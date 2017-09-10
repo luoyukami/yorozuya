@@ -89,7 +89,7 @@ public class ArticleService {
         ArticleVO articleVO = new ArticleVO();
 
         ArticleInfo articleInfo = articleRepository.findOne(Id);//获取文章信息
-        Result result = FileUtil.getFileContent(articleInfo.getLocation());//获取文章内容
+        Result result = FileUtil.getFileContentByReader(articleInfo.getLocation());//获取文章内容
         if (result.getSuccess()) {
             articleVO.setContent((String) result.getData());
         }

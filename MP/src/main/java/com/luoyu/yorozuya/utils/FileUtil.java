@@ -4,10 +4,7 @@ import com.luoyu.yorozuya.pojo.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.UUID;
 
 /**
@@ -95,6 +92,55 @@ public class FileUtil {
 
     public static Result getFileContent(String realPath) {
         return getFileContent(realPath, null);
+    }
+
+    /**
+     * 通过Reader读取文件内容
+     * @param filePath 文件所在路径
+     * @param fileName 文件名
+     * @return 读取结果
+     */
+    public static Result getFileContentByReader(String filePath, String fileName) {
+        String realPath = filePath + (fileName == null ? "": "/" + fileName);
+        Result result = new Result();
+        FileReader fr = null;
+        BufferedReader br = null;
+        String content = null;
+        try {
+            fr = new FileReader(realPath);
+            br = new BufferedReader(fr);
+            StringBuffer stb = new StringBuffer();
+            String line;
+            while ((line = br.readLine()) != null) {
+                stb.append(line);
+            }
+            content = stb.toString();
+        } catch (IOException e) {
+            result.setSuccess(false);
+            result.setInfo("文件IO流异常"+ e.getMessage());
+            logger.error("==========读取文件失败============");
+            e.printStackTrace();
+        } finally {
+            try {
+                if(null != fr)
+                    fr.close();
+                if(null != br)
+                    br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                logger.error("==========关闭流文件读取异常============");
+            }
+        }
+        if (null != content && !content.isEmpty()) {
+            result.setData(content);
+        } else {
+            result.setData("文件内容为空");
+        }
+        return result;
+    }
+
+    public static Result getFileContentByReader(String realPath) {
+        return getFileContentByReader(realPath, null);
     }
 
     /**
