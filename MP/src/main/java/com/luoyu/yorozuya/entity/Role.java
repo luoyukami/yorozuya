@@ -17,6 +17,7 @@ import java.util.Set;
 @SQLDelete(sql = "UPDATE sys_role SET is_delete = 0 where id=?")
 @Where(clause = "is_delete = 1")
 public class Role extends BaseEntity {
+
     @ManyToMany
     @JoinTable(
             name = "sys_role_org",
@@ -47,7 +48,6 @@ public class Role extends BaseEntity {
 
     @Column(name = "is_delete", columnDefinition = "bit(1) default 1 comment '删除表示 0表示是，1表示否'")
     private boolean isDelete; // 是否删除 1代表否
-
 
     public Set<Organization> getOrganizations() {
         return organizations;

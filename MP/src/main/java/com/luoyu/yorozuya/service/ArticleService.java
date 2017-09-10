@@ -87,13 +87,24 @@ public class ArticleService {
      */
     public ArticleVO getArticleById(Long Id) {
         ArticleVO articleVO = new ArticleVO();
-
+        Result result;
         ArticleInfo articleInfo = articleRepository.findOne(Id);//获取文章信息
-        Result result = FileUtil.getFileContentByReader(articleInfo.getLocation());//获取文章内容
+        /*判断查询的文章是否存在*/
+        if (articleInfo != null && articleInfo.getLocation() != null) {
+            result = FileUtil.getFileContentByReader(articleInfo.getLocation());//获取文章内容
+        }
+        else {
+            result = new Result();
+            result.setSuccess(false);
+            result.setInfo("查找文件失败，请检查文章编号是否正确！");
+        }
+        /*如果文章读取成功，则设置VO数据*/
         if (result.getSuccess()) {
             articleVO.setContent((String) result.getData());
         }
 
+        /*将获取到的操作信息以及数据返回给前台*/
+        articleVO.setResult(result);
         articleVO.setItem(articleInfo);
 
         return articleVO;
