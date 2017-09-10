@@ -26,41 +26,55 @@ import java.util.*;
 @SQLDelete(sql = "Update user SET status = 'deleted' where id=?")
 @Where(clause = "status != 'deleted'")
 public class User extends BaseEntity implements UserDetails {
-    @Column(name = "name", columnDefinition = "char(20)")
-    private String username;//用户名
-    @Column(name = "password", columnDefinition = "varchar(256)")
-    private String password;//密码
     @ManyToOne
     @JoinColumn(name = "org_id")
     private Organization organization;//归属结构(例如：游戏区域闲聊版  操作权限和访问权限的判定之一)
-    @Column(name = "last_login_time")
-    private Timestamp lastLoginTime;//上一次登陆时间
-    @Column(name = "last_ip", columnDefinition = "char(15)")
-    private String lastIp;//上一次登陆的ip地址
-    @Column(name = "regType", columnDefinition = "char(10)")
-    @Enumerated(EnumType.STRING)
-    private EnumUserRegType regType;//注册类型
-    @Column(name = "mobile", columnDefinition = "char(13)")
-    private String mobile;//电话
-    @Column(name = "email", columnDefinition = "char(64)")
-    private String email;//邮箱
-    @Column(name = "wechat", columnDefinition = "char(64)")
-    private String wechat;//微信
-    @Column(name = "user_type", columnDefinition = "char(30)")
-    @Enumerated(EnumType.STRING)
-    private EnumUserType userType;//用户类型(例如：音乐区资源版版主 操作权限和访问权限的判定之一)
-    @Column(name = "icon", columnDefinition = "varchar(256)")
-    private String icon;//头像地址
+
     @ManyToOne
     @JoinColumn(name = "operator_id")
     private User operator;//操作员
-    @Column(name = "status", columnDefinition = "char(10) default 'NORMAL'")
-    private EnumUserStatus status;//用户状态
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "sys_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;//拥有角色列表
-    @Column(name = "last_pwd_reset_date")
+
+    @Column(name = "name", columnDefinition = "char(20) comment '用户名'")
+    private String username;//用户名
+
+    @Column(name = "password", columnDefinition = "varchar(256) comment '密码'")
+    private String password;//密码
+
+    @Column(name = "last_login_time", columnDefinition = "TIMESTAMP comment '上一次登陆时间'")
+    private Timestamp lastLoginTime;//上一次登陆时间
+
+    @Column(name = "last_ip", columnDefinition = "char(15) comment '上一次登陆的ip地址'")
+    private String lastIp;//上一次登陆的ip地址
+
+    @Column(name = "regType", columnDefinition = "char(10) comment '注册类型'")
+    @Enumerated(EnumType.STRING)
+    private EnumUserRegType regType;//注册类型
+
+    @Column(name = "mobile", columnDefinition = "char(13) comment '电话'")
+    private String mobile;//电话
+
+    @Column(name = "email", columnDefinition = "char(64) comment '邮箱'")
+    private String email;//邮箱
+
+    @Column(name = "wechat", columnDefinition = "char(64) comment '微信'")
+    private String wechat;//微信
+
+    @Column(name = "user_type", columnDefinition = "char(30) comment '用户类型(例如：音乐区资源版版主 操作权限和访问权限的判定之一)'")
+    @Enumerated(EnumType.STRING)
+    private EnumUserType userType;//用户类型(例如：音乐区资源版版主 操作权限和访问权限的判定之一)
+
+    @Column(name = "icon", columnDefinition = "varchar(256) comment '用户头像地址'")
+    private String icon;//头像地址
+
+    @Column(name = "status", columnDefinition = "char(10) default 'NORMAL' comment '用户状态'")
+    private EnumUserStatus status;//用户状态
+
+    @Column(name = "last_pwd_reset_date", columnDefinition = " TIMESTAMP comment '最近的密码修改时间，用于配合token验证'")
     private Timestamp lastPasswordResetDate;//最近的密码修改时间，用于配合token验证
 
     // 实现UsreDetails需要实现一些方法

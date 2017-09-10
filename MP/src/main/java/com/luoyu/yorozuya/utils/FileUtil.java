@@ -57,10 +57,10 @@ public class FileUtil {
     }
 
     /**
-     * 读取文章内容
-     * @param filePath
-     * @param fileName
-     * @return
+     * 通过字节流读取文章内容
+     * @param filePath 文件路径
+     * @param fileName 文件名
+     * @return 读取结果
      */
     public static Result getFileContent(String filePath, String fileName) {
         String realPath = filePath + (fileName == null ? "": "/" + fileName);
@@ -95,7 +95,7 @@ public class FileUtil {
     }
 
     /**
-     * 通过Reader读取文件内容
+     * 通过字符流读取文件内容
      * @param filePath 文件所在路径
      * @param fileName 文件名
      * @return 读取结果

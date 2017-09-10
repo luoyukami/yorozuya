@@ -16,9 +16,9 @@ public class ArticleClass extends BaseEntity{
     private String classCode;//分类代码
     private String classNameCN;//分类中文名
     private String classNameEN;//分类英文名
-    private String status;
-    private String classContent;
-    private Long operatorId;
+    private String status;//此分类的状态
+    private String classContent;//分类描述
+    private Long operatorId;//操作员编号
 
     @Column(name = "classCode", columnDefinition = "char(4)")
     public String getClassCode() {

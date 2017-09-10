@@ -11,33 +11,37 @@ import java.sql.Date;
  */
 public class UserInfo extends BaseEntity{
 
+    @Column(name = "user_id", columnDefinition = "comment '用户编号'")
     private Long userId;
+
+    @Column(name = "birthday", columnDefinition = "comment '用户生日'")
     private Date birthday;
+
+    @Column(name = "sex", columnDefinition = "char(1) comment '用户性别'")
     private Character sex;
+
+    @Column(name = "real_name", columnDefinition = "varchar(20) comment '用户真实姓名'")
     private String realName;
+
+    @Column(name = "constellation", columnDefinition = "char(2) comment '用户星座'")
     private String constellation;
 
-    @Column(name = "user_id")
     public Long getUserId() {
         return userId;
     }
 
-    @Column(name = "birthday")
     public Date getBirthday() {
         return birthday;
     }
 
-    @Column(name = "sex", columnDefinition = "char(1)")
     public Character getSex() {
         return sex;
     }
 
-    @Column(name = "real_name", columnDefinition = "varchar(20)")
     public String getRealName() {
         return realName;
     }
 
-    @Column(name = "constellation", columnDefinition = "char(2)")
     public String getConstellation() {
         return constellation;
     }

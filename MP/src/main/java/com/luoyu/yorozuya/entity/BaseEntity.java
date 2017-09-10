@@ -14,9 +14,9 @@ public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;//主键，自增长
-    @Column(name = "create_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
+    @Column(name = "create_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP comment '数据创建时间'")
     private Timestamp createTime;//数据创建时间
-    @Column(name = "modify_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
+    @Column(name = "modify_time", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP comment '数据修改时间'")
     private Timestamp modifyTime;//数据修改时间
 
 

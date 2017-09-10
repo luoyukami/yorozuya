@@ -1,3 +1,4 @@
 INSERT INTO test.test_user (uuid, age, name, sex) VALUES ('402881845dd3f1f2015dd3f20fbf0000', 20, '张三', 'm');
 INSERT INTO test.test_user (uuid, age, name, sex) VALUES ('402881845dd3f1f2015dd3f22ea10001', 30, '李狗蛋', 'm');
 INSERT INTO test.test_user (uuid, age, name, sex) VALUES ('402881845dd3f1f2015dd3f2584f0002', 27, 'LFY', 'm');
+INSERT INTO test.article_info (create_time, modify_time, article_name, author_id, class_code, location, page_view, status, up_vote) VALUES ('2017-09-10 12:13:28', '2017-09-10 12:13:28', '文章测试2', null, null, '/Users/gx/git/yorozuya/MP/src/main/resources/file/127dced657ca4b899ac8966c4e19d250.md', null, '1', null);

@@ -18,13 +18,22 @@ import java.util.Set;
 @Where(clause = "is_delete = 1")
 public class Role extends BaseEntity {
     @ManyToMany
-    @JoinTable(name = "sys_role_org", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "org_id"))
+    @JoinTable(
+            name = "sys_role_org",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "org_id"))
     private Set<Organization> organizations; // 角色和结构
+
     @ManyToMany
-    @JoinTable(name = "sys_role_auth", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "auth_id"))
+    @JoinTable(
+            name = "sys_role_auth",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "auth_id"))
     private Set<Authority> authorities; // 角色和权限
-    @Column(name = "name", columnDefinition = "char(20)")
+
+    @Column(name = "name", columnDefinition = "char(20) comment '角色名称'")
     private String name; // 角色名称
+
     @Column(name = "code", columnDefinition = "char(30)")
     private String code; // 角色代码
     @Column(name = "role_type", columnDefinition = "char(30)")
